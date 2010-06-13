@@ -30,3 +30,6 @@ kazeburo
 daisuke
 maki
 TODO
+EUC
+JP
+UTF
