@@ -16,6 +16,14 @@ This module provides functions to treat half-width and full-width characters and
 
 This module is pure perl version of [Text::VisualWidth](http://search.cpan.org/perldoc?Text::VisualWidth). This is bit slow, but it's not require compiler.
 
+# Ambiguous Characters
+
+This module treats ambiguous characters are half width by default.
+
+And you can specify the behavior by the `$Text::VisualWidth::PP::EastAsian` flag expressly.
+
+Note: If `$Unicode::EastAsianWidth::EastAsian` is true on compilation time, this module set `$Text::VisualWidth::PP::EastAsian` as true for backward compatibility.
+
 # AUTHOR
 
 Tokuhiro Matsuno <tokuhirom AAJKLFJEF GMAIL COM>
