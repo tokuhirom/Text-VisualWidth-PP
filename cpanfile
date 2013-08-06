@@ -1,7 +1,6 @@
-requires 'Unicode::EastAsianWidth', '1.3';
 requires 'perl', '5.008001';
+requires 'Unicode::EastAsianWidth', '1.3';
 
-on build => sub {
-    requires 'ExtUtils::MakeMaker', '6.59';
-    requires 'Test::More';
+on test => sub {
+    requires 'Test::More', 0.98;
 };
