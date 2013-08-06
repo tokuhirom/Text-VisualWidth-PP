@@ -64,8 +64,8 @@
          "web" : "https://github.com/tokuhirom/Text-VisualWidth-PP"
       }
    },
-   "version" : "0.01",
+   "version" : "0.02",
    "x_contributors" : [
-      "tokuhirom <tokuhirom@gmail.com>"
+      "Tokuhiro Matsuno <tokuhirom@gmail.com>"
    ]
 }
