@@ -5,3 +5,10 @@ ppport.h
 *.sw[po]
 *.bak
 *.old
+/Text-VisualWidth-PP-*
+/.build
+/_build_params
+/Build
+!Build/
+!META.json
+!LICENSE
