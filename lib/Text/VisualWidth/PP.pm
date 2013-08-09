@@ -2,8 +2,11 @@ package Text::VisualWidth::PP;
 use strict;
 use warnings;
 use 5.008001;
+use parent qw(Exporter);
 our $VERSION = '0.02';
 use Unicode::EastAsianWidth;
+
+our @EXPORT_OK = qw(vwidth vtrim);
 
 our $EastAsian = $Unicode::EastAsianWidth::EastAsian;
 
@@ -24,6 +27,9 @@ sub InVWPP0Halfwidth() {
     InEastAsianNeutral().
     InEastAsianAmbiguous()
 }
+
+sub vwidth { width(@_) }
+sub vtrim  {  trim(@_) }
 
 sub width {
     my $str = shift;
@@ -82,6 +88,11 @@ Text::VisualWidth::PP - trimming text by the number of the column s of terminals
 
     Text::VisualWidth::PP::width("あいうえおaiu"); # => 13
     Text::VisualWidth::PP::trim("あいうえおaiu", 7); # => "あいう"
+
+    # with exporter
+    use Text::VisualWidth::PP qw(vwidth vtrim);
+    vwidth("あいうえおaiu"); # => 13
+    vtrim("あいうえおaiu", 7); # => "あいう"
 
 =head1 DESCRIPTION
 
