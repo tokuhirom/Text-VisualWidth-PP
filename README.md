@@ -10,6 +10,11 @@ Text::VisualWidth::PP - trimming text by the number of the column s of terminals
     Text::VisualWidth::PP::width("あいうえおaiu"); # => 13
     Text::VisualWidth::PP::trim("あいうえおaiu", 7); # => "あいう"
 
+    # with exporter
+    use Text::VisualWidth::PP qw(vwidth vtrim);
+    vwidth("あいうえおaiu"); # => 13
+    vtrim("あいうえおaiu", 7); # => "あいう"
+
 # DESCRIPTION
 
 This module provides functions to treat half-width and full-width characters and display correct size of text in one line on terminals and mobile phones. You can know the visual width of any text and truncate text by the visual width. Now this module support flagged UTF-8 and tested only with Japanese.  
