@@ -96,7 +96,7 @@ Text::VisualWidth::PP - trimming text by the number of the column s of terminals
 
 =head1 DESCRIPTION
 
-This module provides functions to treat half-width and full-width characters and display correct size of text in one line on terminals and mobile phones. You can know the visual width of any text and truncate text by the visual width. Now this module support flagged UTF-8 and tested only with Japanese.  
+This module provides functions to treat half-width and full-width characters and display correct size of text in one line on terminals and mobile phones. You can know the visual width of any text and truncate text by the visual width. Now this module support flagged UTF-8 and tested only with Japanese.
 
 This module is pure perl version of L<Text::VisualWidth>. This is bit slow, but it's not require compiler.
 
@@ -107,6 +107,9 @@ This module treats ambiguous characters are half width by default.
 And you can specify the behavior by the C<$Text::VisualWidth::PP::EastAsian> flag expressly.
 
 Note: If C<$Unicode::EastAsianWidth::EastAsian> is true on compilation time, this module set C<$Text::VisualWidth::PP::EastAsian> as true for backward compatibility.
+
+
+If you want to detect the ambw parameter from users' environment, please look L<Unicode::EastAsianWidth::Detect>.
 
 =head1 AUTHOR
 
