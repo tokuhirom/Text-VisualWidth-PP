@@ -3,7 +3,7 @@ use strict;
 use warnings;
 use 5.008001;
 use parent qw(Exporter);
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 use Unicode::EastAsianWidth;
 
 our @EXPORT_OK = qw(vwidth vtrim);
@@ -74,6 +74,8 @@ sub trim {
 
 1;
 __END__
+
+=for stopwords ambw
 
 =encoding utf8
 
