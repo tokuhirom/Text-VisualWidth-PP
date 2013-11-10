@@ -1,4 +1,4 @@
-Revision history for Perl extension Text::VisualWidth::PP
+Revision history for Perl module Text::VisualWidth::PP
 
 {{$NEXT}}
 
@@ -14,5 +14,7 @@ Revision history for Perl extension Text::VisualWidth::PP
 
     - Added $Text::VisualWidth::PP::EastAsian
 
-0.01    Mon Jun 14 00:09:36 2010
-        - original version
+0.01 2010-06-13
+
+    - original version
+
