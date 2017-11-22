@@ -2,6 +2,12 @@ Revision history for Perl module Text::VisualWidth::PP
 
 {{$NEXT}}
 
+0.05 2017-11-22T02:30:45Z
+
+    - Support unicode combining characters
+      (kaz-utashiro)
+      https://github.com/tokuhirom/Text-VisualWidth-PP/pull/3
+
 0.04 2013-09-09T07:43:04Z
 
     - Notes about Unicode::EastAsianWidth::Detect
