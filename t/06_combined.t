@@ -1,7 +1,8 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 1+4+3+3+6;
+use charnames qw(:full);
+use Test::More;
 BEGIN { use_ok('Text::VisualWidth::PP') };
 
 binmode STDOUT, ":encoding(utf8)";
@@ -11,12 +12,20 @@ is( Text::VisualWidth::PP::trim("123ﾊﾟﾋﾟﾌﾟパピプ",7), '123ﾊﾟ�
 is( Text::VisualWidth::PP::trim("123ﾊﾟﾋﾟﾌﾟパピプ",8), '123ﾊﾟﾋﾟ', 'Halfwidth Kana trim');
 is( Text::VisualWidth::PP::trim("123ﾊﾟﾋﾟﾌﾟパピプ",9), '123ﾊﾟﾋﾟﾌﾟ', 'Halfwidth Kana trim');
 
+sub evalcharname {
+    eval sprintf q("\\N{%s}"), $_[0];
+}
+
+SKIP: {
+
+evalcharname("HIRAGANA LETTER A")
+    or skip "Unicode charname is not supported.";
+
 sub kana {
     my $X_KANA = shift;
     map  { @$_ }
     grep { defined $_->[1] }
-    map  { [ $_->[0], eval "\"$_->[1]\"" ] }	# "\N{NAME}"
-    map  { [ $_->[0], "\\N{$_->[1]}" ] }	# \N{NAME}
+    map  { [ $_->[0], evalcharname($_->[1]) ] }
     map  {					# UNICODE NAME
 	( [ $_,    "$X_KANA LETTER $_" ],
 	  [ "x$_", "$X_KANA LETTER SMALL $_" ] )
@@ -29,12 +38,16 @@ sub kana {
 }
 my %k = kana "KATAKANA";
 my %h = kana "HIRAGANA";
-my %m = (
-    'CT' => "\N{COMBINING KATAKANA-HIRAGANA VOICED SOUND MARK}",
-    'CM' => "\N{COMBINING KATAKANA-HIRAGANA SEMI-VOICED SOUND MARK}",
-    'T'  => "\N{KATAKANA-HIRAGANA VOICED SOUND MARK}",
-    'M'  => "\N{KATAKANA-HIRAGANA SEMI-VOICED SOUND MARK}",
+my %m = do {
+    map  { @$_ }
+    grep { defined $_->[1] }
+    map  { [ $_->[0], evalcharname($_->[1]) ] }
+    ( [ 'CT' => "COMBINING KATAKANA-HIRAGANA VOICED SOUND MARK" ],
+      [ 'CM' => "COMBINING KATAKANA-HIRAGANA SEMI-VOICED SOUND MARK" ],
+      [ 'T'  => "KATAKANA-HIRAGANA VOICED SOUND MARK" ],
+      [ 'M'  => "KATAKANA-HIRAGANA SEMI-VOICED SOUND MARK" ],
     );
+};
 
 # ハ゜ヒ゜フ゜
 my $c_papipu = "$k{HA}$m{CM}$k{HI}$m{CM}$k{HU}$m{CM}";
@@ -57,6 +70,8 @@ is( Text::VisualWidth::PP::trim("${c_mami}",3),
 is( Text::VisualWidth::PP::trim("${c_mami}",2),
     "$k{MA}$m{CT}",
     'Combined trim');
+
+}
 
 # Vietnamese
 ok( Text::VisualWidth::PP::width("Mọi người") == 9, 'VI width');
