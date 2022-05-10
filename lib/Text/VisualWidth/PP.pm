@@ -92,7 +92,7 @@ __END__
 
 =head1 NAME
 
-Text::VisualWidth::PP - trimming text by the number of the column s of terminals and mobile phones.
+Text::VisualWidth::PP - trimming text by the number of the columns of terminals and mobile phones.
 
 =head1 SYNOPSIS
 
