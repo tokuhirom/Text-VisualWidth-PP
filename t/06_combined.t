@@ -7,15 +7,15 @@ BEGIN { use_ok('Text::VisualWidth::PP') };
 binmode STDOUT, ":encoding(utf8)";
 binmode STDERR, ":encoding(utf8)";
 
-ok( Text::VisualWidth::PP::width("123abcﾊﾟﾋﾟﾌﾟパピプ") == 18, 'Normal width');
-is( Text::VisualWidth::PP::trim("123ﾊﾟﾋﾟﾌﾟパピプ",7), '123ﾊﾟﾋﾟ', 'Halfwidth Kana trim 1');
+ok( Text::VisualWidth::PP::width("0123abcﾊﾟﾋﾟﾌﾟパピプ") == 19, 'Normal width');
+is( Text::VisualWidth::PP::trim("0123ﾊﾟﾋﾟﾌﾟパピプ",8), '0123ﾊﾟﾋﾟ', 'Halfwidth Kana trim 1');
 # \X behave different in perl < 5.12
 if ($] < 5.011) {
-    is( Text::VisualWidth::PP::trim("123ﾊﾟﾋﾟﾌﾟパピプ",8), '123ﾊﾟﾋﾟﾌ', 'Halfwidth Kana trim 2-1');
+    is( Text::VisualWidth::PP::trim("0123ﾊﾟﾋﾟﾌﾟパピプ",9), '0123ﾊﾟﾋﾟﾌ', 'Halfwidth Kana trim 2-1');
 } else {
-    is( Text::VisualWidth::PP::trim("123ﾊﾟﾋﾟﾌﾟパピプ",8), '123ﾊﾟﾋﾟ', 'Halfwidth Kana trim 2-2');
+    is( Text::VisualWidth::PP::trim("0123ﾊﾟﾋﾟﾌﾟパピプ",9), '0123ﾊﾟﾋﾟ', 'Halfwidth Kana trim 2-2');
 }
-is( Text::VisualWidth::PP::trim("123ﾊﾟﾋﾟﾌﾟパピプ",9), '123ﾊﾟﾋﾟﾌﾟ', 'Halfwidth Kana trim 3');
+is( Text::VisualWidth::PP::trim("0123ﾊﾟﾋﾟﾌﾟパピプ",10), '0123ﾊﾟﾋﾟﾌﾟ', 'Halfwidth Kana trim 3');
 
 my %m = (
     'CT' => "\x{3099}", # COMBINING KATAKANA-HIRAGANA VOICED SOUND MARK

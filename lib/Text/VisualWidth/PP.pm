@@ -63,23 +63,24 @@ sub trim {
 
     my $cnt = 0;
     my $ret = '';
+    my $fullwidth = $EastAsian ? qr/\p{InVWPP1Fullwidth}/ : qr/\p{InVWPP0Fullwidth}/;
     while ($str =~ /\G(\X)/g) {
-	my $ch = $1;
-	my $w = do {
-	    if ($ch =~ /\p{InFullwidth}/) {
-		2;
-	    } elsif (length($ch) == 1) {
-		1;
-	    } else {
-		width($ch);
-	    }
-	};
-	if ($cnt+$w <= $limit) {
-	    $ret .= $ch;
-	    $cnt += $w;
-	} else {
-	    last;
-	}
+        my $ch = $1;
+        my $w = do {
+            if ($ch =~ /\A$fullwidth\z/) {
+                2;
+            } elsif (length($ch) == 1) {
+                1;
+            } else {
+                width($ch);
+            }
+        };
+        if ($cnt+$w <= $limit) {
+            $ret .= $ch;
+            $cnt += $w;
+        } else {
+            last;
+        }
     }
     $ret;
 }
