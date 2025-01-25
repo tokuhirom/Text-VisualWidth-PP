@@ -13,6 +13,7 @@ our $EastAsian = $Unicode::EastAsianWidth::EastAsian;
 sub Spacing {
     $_[0] . <<END
 -utf8::Nonspacing_Mark
+-utf8::Enclosing_Mark
 -utf8::Default_Ignorable_Code_Point
 END
 }
