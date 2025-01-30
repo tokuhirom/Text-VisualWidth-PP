@@ -10,11 +10,17 @@ our @EXPORT_OK = qw(vwidth vtrim);
 
 our $EastAsian = $Unicode::EastAsianWidth::EastAsian;
 
+if ($^V lt v5.32) {
+    no strict 'refs';
+    *{"utf8::Is_Emoji_Modifier"} = sub { "1F3FB\t1F3FF\n" };
+};
+
 sub Spacing {
     $_[0] . <<END
 -utf8::Nonspacing_Mark
 -utf8::Enclosing_Mark
 -utf8::Default_Ignorable_Code_Point
+-utf8::Is_Emoji_Modifier
 END
 }
 
@@ -48,11 +54,13 @@ sub width {
 
     my $ret = 0;
     if ($EastAsian) {
-        while ($str =~ /(\p{InVWPP1Fullwidth}+)|(\p{InVWPP1Halfwidth}+)/g) {
+        while ($str =~ /((?:(?<!\N{U+200D})\p{InVWPP1Fullwidth})+)
+                       |((?:(?<!\N{U+200D})\p{InVWPP1Halfwidth})+)/xg) {
             $ret += $1 ? length($1) * 2 : length($2)
         }
     } else {
-        while ($str =~ /(\p{InVWPP0Fullwidth}+)|(\p{InVWPP0Halfwidth}+)/g) {
+        while ($str =~ /((?:(?<!\N{U+200D})\p{InVWPP0Fullwidth})+)
+                       |((?:(?<!\N{U+200D})\p{InVWPP0Halfwidth})+)/xg) {
             $ret += $1 ? length($1) * 2 : length($2)
         }
     }
