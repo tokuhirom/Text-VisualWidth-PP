@@ -3,7 +3,7 @@ use strict;
 use warnings;
 use 5.008001;
 use parent qw(Exporter);
-our $VERSION = '0.07';
+our $VERSION = '0.08';
 use Unicode::EastAsianWidth;
 
 our @EXPORT_OK = qw(vwidth vtrim);
