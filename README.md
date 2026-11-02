@@ -36,8 +36,8 @@ If you want to detect the ambw parameter from users' environment, please look [U
 On perl 5.30 and later, the width classes come from the
 `East_Asian_Width` property of perl itself, so they follow the
 Unicode version of the perl in use (see [perluniprops](https://metacpan.org/pod/perluniprops)).  On older
-perls, the table of [Unicode::EastAsianWidth](https://metacpan.org/pod/Unicode%3A%3AEastAsianWidth) (Unicode 12.0) is
-used, which is newer than the Unicode version of those perls.
+Perl versions, the table of [Unicode::EastAsianWidth](https://metacpan.org/pod/Unicode%3A%3AEastAsianWidth) (Unicode 12.0)
+is used, which is newer than the Unicode version of those Perl versions.
 
 # AUTHOR
 

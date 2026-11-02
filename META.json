@@ -4,13 +4,13 @@
       "Tokuhiro Matsuno <tokuhirom AAJKLFJEF GMAIL COM>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Minilla/v3.1.25, CPAN::Meta::Converter version 2.150010",
+   "generated_by" : "Minilla/v3.3.2",
    "license" : [
       "perl_5"
    ],
    "meta-spec" : {
       "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
-      "version" : 2
+      "version" : "2"
    },
    "name" : "Text-VisualWidth-PP",
    "no_index" : {
@@ -66,7 +66,7 @@
          "web" : "https://github.com/tokuhirom/Text-VisualWidth-PP"
       }
    },
-   "version" : "0.08",
+   "version" : "0.09",
    "x_contributors" : [
       "Dabrien 'Dabe' Murphy <dabe@parabon.com>",
       "Kazumasa Utashiro <kaz@utashiro.com>",

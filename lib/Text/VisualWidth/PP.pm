@@ -3,7 +3,7 @@ use strict;
 use warnings;
 use 5.008001;
 use parent qw(Exporter);
-our $VERSION = '0.08';
+our $VERSION = '0.09';
 our @EXPORT_OK = qw(vwidth vtrim);
 
 # The East_Asian_Width property of perl follows the Unicode version
@@ -175,8 +175,8 @@ If you want to detect the ambw parameter from users' environment, please look L<
 On perl 5.30 and later, the width classes come from the
 C<East_Asian_Width> property of perl itself, so they follow the
 Unicode version of the perl in use (see L<perluniprops>).  On older
-perls, the table of L<Unicode::EastAsianWidth> (Unicode 12.0) is
-used, which is newer than the Unicode version of those perls.
+Perl versions, the table of L<Unicode::EastAsianWidth> (Unicode 12.0)
+is used, which is newer than the Unicode version of those Perl versions.
 
 =head1 AUTHOR
 
